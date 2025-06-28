@@ -34,7 +34,36 @@
 - 02_perpurbation.py
 - 03_squad_eval.py
 
+## 评估结果
+原始数据：{'exact': 100.0, 'f1': 100.0, 'total': 4827, 'HasAns_exact': 100.0, 'HasAns_f1': 100.0, 'HasAns_total': 4827, 'best_exact': 100.0, 'best_exact_thresh': 0.0, 'best_f1': 100.0, 'best_f1_thresh': 0.0}
 
+扰动后的数据：{'exact': 86.22332711829293, 'f1': 89.88948599432614, 'total': 4827, 'HasAns_exact': 86.22332711829293, 'HasAns_f1': 89.88948599432614, 'HasAns_total': 4827, 'best_exact': 86.22332711829293, 'best_exact_thresh': 0.0, 'best_f1': 89.88948599432614, 'best_f1_thresh': 0.0}
+
+
+
+## 数据说明
+
+本实验使用的数据集规模:
+
+- squad2-filter/filtered-squad.parquet: 从 SQuAD v2 validation 集的前 100 条数据中筛选出模型能正确回答的样本
+- perturbed/squad2-question-perturbed.parquet: 基于 filtered-squad.parquet 生成的扰动数据集,保持答案不变但对问题进行了同义词替换等扰动
+
+这两个数据集规模较小,主要用于验证模型对问题扰动的鲁棒性。如需进行更大规模的评估,可以扩大原始数据的采样范围。
+
+
+
+# TODO
+## 进度显示
+
+为了更好地监控评估进度,各脚本都添加了进度条显示:
+
+- 使用 tqdm 显示数据处理和评估的进度
+- 显示已处理样本数/总样本数
+- 预估剩余时间
+
+## 参数配置
+
+主要参数都通过命令行参数传入:
 
 
 

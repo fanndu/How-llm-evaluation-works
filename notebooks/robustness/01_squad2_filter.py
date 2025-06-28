@@ -4,7 +4,7 @@ import pandas as pd
 import os
 
 # 1. 只加载有答案的样本
-dataset = load_dataset("squad_v2", split="validation[:100]")
+dataset = load_dataset("squad_v2", split="validation")
 
 has_ans_dataset = [item for item in dataset if len(item['answers']['text']) > 0]
 
@@ -51,7 +51,7 @@ df = pd.DataFrame(rows)
 # 5. 保存为 parquet
 save_dir = "squad2-filter"  # 你可以修改为目标目录
 os.makedirs(save_dir, exist_ok=True)
-save_path = os.path.join(save_dir, "f-squad.parquet")
+save_path = os.path.join(save_dir, "filtered-squad.parquet")
 df.to_parquet(save_path, engine="pyarrow", index=False)
 print(f"已保存为 Parquet 格式：{save_path}")
 

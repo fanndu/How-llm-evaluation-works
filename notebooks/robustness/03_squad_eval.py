@@ -2,10 +2,10 @@ from datasets import load_dataset
 from transformers import pipeline
 import evaluate
 
-# dataset = load_dataset("squad_v2", split="validation[:100]")
 # dataset = load_dataset("parquet", data_files="squad2-filter/filtered-squad.parquet", split="train")
 dataset = load_dataset("parquet", data_files="perturbed/squad2-question-perturbed.parquet", split="train")
-qa_model = pipeline("question-answering", model="distilbert/distilbert-base-uncased-distilled-squad")
+#distilbert/distilbert-base-uncased-distilled-squad for comparison
+qa_model = pipeline("question-answering", model="deepset/roberta-base-squad2")
 
 predictions = []
 references = []
